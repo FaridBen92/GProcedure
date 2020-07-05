@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<div data-th-replace="fragments/head.html::head"></div>
+<body class="">
+<div class=" bg-light container col-8  border border-danger shadow-lg" style="height:1200px;">
+<div data-th-replace="fragments/navbar.html::navbar"></div>
+
+    <h1 class="text-center">Creation d'utilisateur</h1>
+
+<form th:action="@{/form}" method="post" class="container col-8 mx-auto" >
+<div class="form-row">
+    <div class="col">
+        <label for="prenom">Prénom</label>
+        <input name="prenom" type="text" class="form-control" id="prenom" placeholder="Prénom" >
+    </div>
+    <div class="col">
+        <label for="nom">Nom</label>
+        <input name="nom" type="text" class="form-control" id="nom" placeholder="Nom">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+        <label for="mdp">Password</label>
+        <input name="mdp" type="password" class="form-control" id="mdp">
+    </div>
+
+</div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="mail">E mail</label>
+            <div class="input-group-prepend">
+
+                <input name="mail" type='text' class='form-control md-3' id='mail' placeholder='Jane Doe' value="">
+                <div><img src="http://www.lagorgefraiche.fr/wp-content/uploads/2018/02/arobase.png" height="33px"/></div>
+                <select name="domaine" id="inputState" class="form-control">
+                    <option  value="ville-la-courneuve.fr" selected>ville-la-courneuve.fr</option>
+                </select>
+            </div>
+        </div>
+</div>
+<fieldset class="form-group row">
+    <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0"></legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input  class="form-check-input" type="radio" name="role" id="role1" value="3">
+                <label class="form-check-label" for="role1">
+                    Utilisateur
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="role" id="role2" value="2">
+                <label class="form-check-label" for="role2">
+                    Editeur
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="role" id="role3" value="1">
+                <label class="form-check-label" for="role3">
+                    Administrateur
+                </label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+    <button name="createUser" type="submit" class="btn btn-danger">Valider</button>
+</form>
+</div>
+</body>
+</html>

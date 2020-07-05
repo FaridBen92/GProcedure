@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+
+
+<div data-th-fragment="teltable">
+    <form th:action="@{/procedure}" method="post">
+
+        <div class="container-fluid mx-auto" >
+            <div  class="container-fluid">
+
+                <table  class="container-fluid ">
+
+                    <tbody th:if="${procedure.categorie} == 'Telephonie'" th:each="procedure : ${procedures}">
+                    <tr>
+                        <th class=" container col-11" colspan="2">
+                            <button class="container-fluid btn ">
+                                <div class="card">
+                                    <th:block name="id" th:if="${procedure.categorie} == 'Telephonie'" th:value="${procedure.id}">
+                                        <div name="titre" th:if="${procedure.categorie} == 'Telephonie'" th:utext="${procedure.titre}" class="card-header" th:name="titre">
+
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 name="souTitre" th:if="${procedure.categorie} == 'Telephonie'" th:text="${procedure.sousTitre}" class="card-title"></h5>
+                                            <p  name="contenue" th:if="${procedure.categorie} == 'Telephonie'" th:text="${procedure.resume}" class="card-text"></p>
+                                            <footer class="blockquote-footer" th:if="${procedure.categorie} == 'Telephonie'" th:text="${procedure.user.name}"> <cite title="Source Title" th:if="${procedure.categorie} == 'Telephonie'" th:text="${procedure.createDate}"></cite></footer>
+                                        </div>
+                                    </th:block>
+                                </div>
+                            </button>
+                        </th>
+
+                        <td class="container col-1">
+
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</html>

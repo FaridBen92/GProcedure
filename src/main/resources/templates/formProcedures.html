@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<div data-th-replace="fragments/head.html::head"></div>
+<body class="">
+<div class=" bg-light container col-8  border border-danger shadow-lg" style="height:1200px;">
+<div data-th-replace="fragments/navbar.html::navbar"></div>
+
+<h1 class="text-center">Creation de Nouvelles Procedures</h1>
+
+
+
+
+<form th:action="@{/procedure}+'/'+${id}" method="post" class="container-fluid  mx-auto">
+    <div class="form-group col-md-9">
+        <div class="col">
+
+            <th:block name="id" th:value="${id}"></th:block>
+
+            <label for="titre">Titre</label>
+            <input name="titre" type="text" class="form-control" id="Titre" placeholder="Titre" required>
+        </div>
+        <div class="col">
+            <label for="sousTitre">Sous-Titre</label>
+            <input name="sousTitre" type="text" class="form-control" id="sousTitre" placeholder="Sous-Titre" >
+        </div>
+
+
+
+        <br>
+
+        <fieldset class="form-group row">
+            <div >
+                <legend class="col-form-label col-sm-2 pt-0"></legend>
+                <div class="row">
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <div class="form-check">
+                        <input  class="form-check-input" type="radio" name="categorie" id="categorie1" value="Systeme">
+                        <label class="form-check-label" for="categorie1">
+                            Systeme & Reseau
+                        </label>
+                    </div>
+                    &nbsp;
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categorie" id="categorie2" value="Telephonie">
+                        <label class="form-check-label" for="categorie2">
+                            Telephonie
+                        </label>
+                    </div>
+                    &nbsp;
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="categorie" id="categorie3" value="Telephonie" disabled>
+                        <label class="form-check-label" for="categorie3">
+                            Smatphone
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="col">
+
+            <textarea  name="contenue" class="form-control resize " id="contenue" placeholder="Veuillez saisir votre texte" required></textarea>
+            <br>
+
+            <button name="createUser" type="submit" class="btn btn-danger">Valider</button>
+        </div>
+
+    </div>
+
+
+</form>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function (){
+        CKEDITOR.replace('contenue',{
+            uiColor: '#ffffff'
+
+            }
+
+
+        )
+
+
+
+
+    });
+    config.extraPlugins = 'exportpdf';
+</script>
+</body>
+</html>

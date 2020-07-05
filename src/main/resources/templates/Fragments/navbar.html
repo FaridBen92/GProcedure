@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<header data-th-fragment="navbar">
+    <div class="container-fluid d-flex">
+    <div class="col-11 mt-1">
+        <a href="/">
+            <img src="https://lacourneuve.fr/themes/custom/lacourneuve/assets/images/logo-lacourneuve-red.svg" width="350" height="80" class="d-inline-block align-top" alt="" loading="lazy">
+        </a>
+
+
+    </div>
+        <div class="col-1 mt-2 mr-lg-5">
+            <img th:src="@{/images/logo.png}" alt="" th:width="60" th:height="60" class="figure-img"/>
+            <div sec:authorize="isAuthenticated()">
+                 <span sec:authentication="name"></span></div>
+        </div>
+
+
+    </div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-danger"  >
+    <a class="navbar-brand" href="#">
+
+
+    </a>
+    <div class=" collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+            <li class="nav-item active">
+                <a class=" nav-link text-danger" href="/accueil">Accueil <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="/user">Utilisateurs</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Procedure
+                </a>
+                <div class="dropdown-menu text-danger" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item text-danger" href="/systemReseau">Systeme Reseau</a>
+                    <a class="dropdown-item text-danger" href="/telephonie">Telephonie</a>
+                    <div sec:authorize="hasAnyAuthority('EDITEUR','ADMIN')" class="dropdown-divider text-danger"></div>
+                    <a sec:authorize="hasAnyAuthority('EDITEUR','ADMIN')"  class="dropdown-item text-danger" href="/ajoutModification">Ajout / modification</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="/liens">Liens</a>
+            </li>
+            <div sec:authorize="hasAuthority('ADMIN')" class="navbar-divider text-muted" style="line-height: 85%">|<br>|</div>
+            <div sec:authorize="hasAuthority('ADMIN')">
+            <li  class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-danger" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                <div  class="dropdown-menu text-danger" aria-labelledby="adminDropdown">
+                    <a  class="dropdown-item text-danger"  href="/admin">Admin</a>
+                    <a class="dropdown-item text-danger" href="/user">Utilisateur</a>
+                    <div class="dropdown-divider text-danger"></div>
+                    <a class="dropdown-item text-danger" href="/form">+ Creation utilisateur</a>
+                    <a class="dropdown-item text-danger" href="/modifier">+ Modifier utilisateur</a>
+
+                </div>
+            </li>
+            </div>
+        </ul>
+
+        <form th:action="@{/logout}" class="ml-lg-5">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Deconnection</button>
+        </form>
+
+    </div>
+</nav>
+
+    <!--<form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+    </form>-->
+</header>

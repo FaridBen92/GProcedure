@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+
+<div data-th-replace="fragments/head.html::head"></div>
+<body class="">
+<div class=" bg-light container col-8  border border-danger shadow-lg" style="min-height: 200vh;">
+    <div data-th-replace="fragments/navbar.html::navbar"></div>
+
+    <h1 class="text-center">Procedure</h1>
+
+    <div data-th-replace="fragments/navbarleft.html::navbarleft"></div>
+
+
+
+
+                            <div class="container col-10 d-flex flex-column bg-white border border-danger rounded float-right" >
+                                <h1 name="titre" class="text-center"><span th:utext="${titre}"></span></h1>
+
+                                <h4><span th:utext="${souTitre}" ></span></h4>
+
+                                 <span th:utext="${contenue}"></span>
+
+
+                                <p class="d-flex justify-content-end">Crée par:<span th:utext="${nonUser}"></span></p>
+                            </div>
+
+
+
+
+</div>
+</body>
+<csrf disabled="true"/>
+</html>
+
+
+
+

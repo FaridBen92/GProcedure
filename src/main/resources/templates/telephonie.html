@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<div data-th-replace="fragments/head.html::head"></div>
+<body class="">
+<div class=" bg-light container col-8  border border-danger shadow-lg" style="height:1200px;">
+<div data-th-replace="fragments/navbar.html::navbar"></div>
+
+    <h1 class="text-center">Telephonie</h1>
+
+<div data-th-replace="fragments/navbarleft.html::navbarleft"></div>
+<div class="container col-10">
+    <di data-th-replace="fragments/telephonieTable.html::teltable"></di>
+</div>
+
+</div>
+</body>
+</html>

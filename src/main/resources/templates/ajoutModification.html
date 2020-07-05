@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<div data-th-replace="fragments/head.html::head"></div>
+<body class="">
+<div class=" bg-light container col-8  border border-danger shadow-lg" style="height:1200px;">
+    <div data-th-replace="fragments/navbar.html::navbar"></div>
+
+    <div class="container-fluid mx-auto  d-flex">
+        <div class=" container col-10 ">
+            <h1 class="text-center">Ajout / Modification </h1>
+
+        </div>
+        <div style="padding-top: 2em">
+            <form th:action="@{/formProcedures}" method="get">
+                <button class=" btn btn-outline-danger my-2 my-sm-0 flex-end ">Créer</button>
+            </form>
+            <br>
+        </div>
+    </div>
+
+    <div class="bg-white container col-9 accordion clear  " id="AjoutSuppAccordeon">
+        <div class="card ">
+            <div class="card-header border border-danger rounded " id="tel">
+                <button class=" btn btn-block text-center" type="button" data-toggle="collapse"
+                        data-target="#telephonie"
+                        aria-expanded="true" aria-controls="collapseOne">
+                    <h2>Telephonie</h2>
+                </button>
+            </div>
+            <div id="telephonie" class="collapse hide" aria-labelledby="tel" data-parent="#AjoutSuppAccordeon">
+
+                <div class="container-fluid ">
+                    <div th:if="${procedure.categorie} == 'Telephonie'" th:each="procedure : ${procedures}"
+                         class="container-fluid">
+                        <form th:action="@{/procedure}+'/'+${procedure.id}" method="get">
+
+                            <div class="container-fluid mx-auto">
+
+
+                                <table class="container-fluid table table-borderless">
+
+                                    <tbody>
+                                    <tr>
+                                        <th class=" container col-11" colspan="2">
+                                            <button class="container-fluid btn ">
+                                                <div class="card">
+                                                    <th:block name="id" th:if="${procedure.categorie} == 'Telephonie'"
+                                                              th:value="${procedure.id}">
+                                                        <div th:if="${procedure.categorie} == 'Telephonie'"
+                                                             th:utext="${procedure.titre}" name="titre"
+                                                             th:value="${procedure.titre}"
+                                                             class="card-header" th:name="titre">
+
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <h5 name="souTitre"
+                                                                th:if="${procedure.categorie} == 'Telephonie'"
+                                                                th:text="${procedure.sousTitre}"
+                                                                class="card-title"></h5>
+                                                            <p name="contenue"
+                                                               th:if="${procedure.categorie} == 'Telephonie'"
+                                                               th:text="${procedure.resume}" class="card-text"></p>
+                                                            <footer class="blockquote-footer"
+                                                                    th:if="${procedure.categorie} == 'Telephonie'"
+                                                                    th:text="${procedure.user.name}"><cite
+                                                                    title="Source Title"
+                                                                    th:if="${procedure.categorie} == 'Telephonie'"
+                                                                    th:text="${procedure.createDate}"></cite>
+                                                            </footer>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                            </button>
+                                        </th>
+
+                                        <td class="container col-1">
+
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container col-9">
+        <div class="card ">
+            <div class="card-header border border-danger rounded" id="sys">
+                <button class="btn  btn-block text-center collapsed" type="button" data-toggle="collapse"
+                        data-target="#sysReseau" aria-expanded="false" aria-controls="collapseTwo">
+                    <h2>Systeme & Reseau</h2>
+                </button>
+            </div>
+            <div id="sysReseau" class="collapse " aria-labelledby="sys" data-parent="#AjoutSuppAccordeon">
+
+                <div class="container-fluid mx-auto">
+                    <div th:if="${procedure.categorie} == 'Systeme'" th:each="procedure : ${procedures}"
+                         class="container-fluid">
+                        <form th:action="@{/procedure}+'/'+${procedure.id}" method="get">
+
+                            <div class="container-fluid mx-auto">
+
+
+                                <table class="container-fluid table table-borderless">
+
+                                    <tbody>
+                                    <tr>
+                                        <th class=" container col-11" colspan="2">
+                                            <button class="container-fluid btn ">
+                                                <div class="card">
+                                                    <th:block name="id" th:if="${procedure.categorie} == 'Systeme'"
+                                                              th:value="${procedure.id}">
+                                                        <div th:if="${procedure.categorie} == 'Systeme'"
+                                                             th:utext="${procedure.titre}" name="titre"
+                                                             th:value="${procedure.titre}"
+                                                             class="card-header" th:name="titre">
+
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <h5 name="souTitre"
+                                                                th:if="${procedure.categorie} == 'Systeme'"
+                                                                th:text="${procedure.sousTitre}"
+                                                                class="card-title"></h5>
+                                                            <p name="contenue"
+                                                               th:if="${procedure.categorie} == 'Systeme'"
+                                                               th:text="${procedure.resume}" class="card-text"></p>
+                                                            <footer class="blockquote-footer"
+                                                                    th:if="${procedure.categorie} == 'Systeme'"
+                                                                    th:text="${procedure.user.name}"><cite
+                                                                    title="Source Title"
+                                                                    th:if="${procedure.categorie} == 'Systeme'"
+                                                                    th:text="${procedure.createDate}"></cite>
+                                                            </footer>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                            </button>
+                                        </th>
+
+                                        <td class="container col-1">
+
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</div>
+</body>
+</html>
